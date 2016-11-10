@@ -1,0 +1,68 @@
+<WMS_Capabilities version="1.3.0" xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd  http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd  http://mapserver.gis.umn.edu/mapserver http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38service=WMS%38version=1.3.0%38request=GetSchemaExtension">
+<!-- MapServer version 6.0.3 OUTPUT=GIF OUTPUT=PNG OUTPUT=JPEG SUPPORTS=PROJ SUPPORTS=AGG SUPPORTS=CAIRO SUPPORTS=FREETYPE SUPPORTS=ICONV SUPPORTS=FRIBIDI SUPPORTS=WMS_SERVER SUPPORTS=WMS_CLIENT SUPPORTS=WFS_SERVER SUPPORTS=WFS_CLIENT SUPPORTS=WCS_SERVER SUPPORTS=SOS_SERVER SUPPORTS=FASTCGI SUPPORTS=THREADS SUPPORTS=GEOS INPUT=POSTGIS INPUT=OGR INPUT=GDAL INPUT=SHAPEFILE -->
+<Service>
+  <Name>WMS</Name>
+  <Title>WMS Mars North Pole Server</Title>
+  <Abstract>Planetary WMS service hosted by Astrogeology, USGS</Abstract>
+  <OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/>
+  <ContactInformation></ContactInformation>
+  <MaxWidth>2048</MaxWidth>
+  <MaxHeight>2048</MaxHeight>
+</Service>
+<Capability>
+  <Request>
+    <GetCapabilities>
+      <Format>text/xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get>
+            <OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/>
+          </Get>
+          <Post>
+            <OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/>
+          </Post>
+        </HTTP>
+      </DCPType>
+    </GetCapabilities>
+      <GetMap>
+        <Format>image/png</Format>
+        <Format>image/jpeg</Format>
+        <Format>image/gif</Format>
+        <Format>image/png; mode=8bit</Format>
+        <Format>application/x-pdf</Format>
+        <Format>image/svg+xml</Format>
+        <Format>image/tiff</Format>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Get>
+            <Post>
+              <OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Post>
+          </HTTP></DCPType>
+      </GetMap>
+      <GetFeatureInfo>
+        <Format>text/plain</Format>
+        <Format>application/vnd.ogc.gml</Format>
+        <DCPType>
+          <HTTP><Get><OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Get>
+                <Post><OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Post>
+          </HTTP>
+        </DCPType>
+      </GetFeatureInfo>
+      <sld:DescribeLayer><Format>text/xml</Format><DCPType><HTTP><Get><OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Get><Post><OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Post></HTTP></DCPType>
+      </sld:DescribeLayer>
+      <sld:GetLegendGraphic><Format>image/png</Format><Format>image/jpeg</Format><Format>image/gif</Format><Format>image/png; mode=8bit</Format><DCPType><HTTP><Get><OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Get><Post><OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Post></HTTP></DCPType>
+      </sld:GetLegendGraphic>
+      <ms:GetStyles><Format>text/xml</Format><DCPType><HTTP><Get><OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Get><Post><OnlineResource xlink:href="http://planetarymaps.usgs.gov/cgi-bin/mapserv?map=/maps/mars/mars_npole.map%38"/></Post></HTTP></DCPType>
+      </ms:GetStyles>
+    </Request>
+    <Exception><Format>XML</Format><Format>INIMAGE</Format><Format>BLANK</Format></Exception>
+    <sld:UserDefinedSymbolization SupportSLD="1" UserLayer="0" UserStyle="1" RemoteWFS="0" InlineFeature="0" RemoteWCS="0"/>
+    <Layer><Name>Mars_North_Pole_Rasters</Name><Title>WMS Mars North Pole Server</Title><Abstract>Planetary WMS service hosted by Astrogeology, USGS</Abstract><CRS>EPSG:32661</CRS><CRS>IAU2000:49918</CRS><EX_GeographicBoundingBox><westBoundLongitude>-220.957</westBoundLongitude><eastBoundLongitude>135</eastBoundLongitude><southBoundLatitude>38.2004</southBoundLatitude><northBoundLatitude>86.7799</northBoundLatitude></EX_GeographicBoundingBox><BoundingBox CRS="EPSG:32661" minx="-2.35703e+06" miny="-2.35703e+06" maxx="2.35703e+06" maxy="2.35703e+06"/>
+      <Layer queryable="0" opaque="0" cascaded="0"><Name>MOLA_color_north</Name><Title>MOLA North Pole Color Shaded Relief</Title><Abstract>NASA's Goddard Space Flight Center used their Mars Orbiter Laser Altimeter topographic data (~640 million elevation measurements) to create a near-global digital elevation model (DEM). This DEM was used to create a colorized shaded relief at 128ppd (463m/p). Because the 128ppd version did not cover the poles, the global 64ppd DEM was used for those regions (above 88 latitude and below -88 latitude). Purple is low and white is high. Total global elevation range is approximately -8,200 meters minimum and 21,229 meters maximum. Elevations above 9000 meters are found only on the larger volcanos.</Abstract><EX_GeographicBoundingBox><westBoundLongitude>-220.957</westBoundLongitude><eastBoundLongitude>135</eastBoundLongitude><southBoundLatitude>38.2004</southBoundLatitude><northBoundLatitude>86.7799</northBoundLatitude></EX_GeographicBoundingBox><BoundingBox CRS="EPSG:32661" minx="-2.35703e+06" miny="-2.35703e+06" maxx="2.35703e+06" maxy="2.35703e+06"/></Layer>
+      <Layer queryable="0" opaque="0" cascaded="0"><Name>MOLA_bw_north</Name><Title>MOLA North Pole Shaded Relief</Title><Abstract>NASA's Goddard Space Flight Center used their Mars Orbiter Laser Altimeter topographic data (~640 million elevation measurnts) to create a near-global digital elevation model (DEM). This DEM was used to create a grayscale hillshade (shaded relief) at 128ppd (463m/ Because the 128ppd version did not cover the poles, the global 64ppd DEM was used for those regions (above 88 latitude and below -88 latitude. Total global elevation range is approx. -8,200 meters minimum and 21,229 meters maximum. Elevations above 9000 meters are found only on the larger volcanos</Abstract><EX_GeographicBoundingBox><westBoundLongitude>-220.957</westBoundLongitude><eastBoundLongitude>135</eastBoundLongitude><southBoundLatitude>38.2004</southBoundLatitude><northBoundLatitude>86.7799</northBoundLatitude></EX_GeographicBoundingBox><BoundingBox CRS="EPSG:32661" minx="-2.35703e+06" miny="-2.35703e+06" maxx="2.35703e+06" maxy="2.35703e+06"/></Layer>
+      <Layer queryable="0" opaque="0" cascaded="0"><Name>MDIM21_north</Name><Title>MDIM 2.1 North Pole Mosaic</Title><Abstract>Viking Mars Digital Image Mosaic (MDIM) version 2.1 was registered to the MOLA control network and created by the USGS at 256 pixel/degree (231m/p).</Abstract><EX_GeographicBoundingBox><westBoundLongitude>-82.0985</westBoundLongitude><eastBoundLongitude>-7.9015</eastBoundLongitude><southBoundLatitude>47.2745</southBoundLatitude><northBoundLatitude>83.7962</northBoundLatitude></EX_GeographicBoundingBox><BoundingBox CRS="EPSG:32661" minx="-1.51251e+06" miny="-1.51251e+06" maxx="1.51251e+06" maxy="1.51251e+06"/></Layer>
+    </Layer>
+  </Capability>
+</WMS_Capabilities>
+
