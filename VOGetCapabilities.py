@@ -49,6 +49,8 @@ def VOGetCapabilities(filename,outfile):
         if (par=="Layer"):
           lresource = Resource(name=par,ID=par)
           votable.resources.append(lresource)
+          ltable = Table(votable)
+          lresource.tables.append(ltable)
           j = 0
           data = []
           for layer in param:
@@ -57,13 +59,13 @@ def VOGetCapabilities(filename,outfile):
             if (lay=="Layer"):
               for field in layer:
                 if (j==0):
-                  table.fields.extend([
+                  ltable.fields.extend([
                     Field(votable, name=field.tag, datatype="char", arraysize="*")])
                 else:
                   try:
-                    table.get_field_by_id_or_name(field.tag)
+                    ltable.get_field_by_id_or_name(field.tag)
                   except:
-                    table.fields.extend([
+                    ltable.fields.extend([
                       Field(votable, name=field.tag, datatype="char", arraysize="*")])
                 if field.text == None:
                   field.text = "Empty"
@@ -75,16 +77,16 @@ def VOGetCapabilities(filename,outfile):
               j = 1
             if datalay != []:
               data.append(datalay)
-          l = len(table.fields)
+          l = len(ltable.fields)
           nl = int(math.ceil((i)/l)+1)
           dim = nl*l-1
           for x in range(0, nl):
             while len(data[x]) < l:
               data[x].append('Empty')
           try:
-            table.create_arrays(dim)
-            table.array = (np.ma.asarray(data,dtype='str'))
-            table.array.mask = False
+            ltable.create_arrays(dim)
+            ltable.array = (np.ma.asarray(data,dtype='str'))
+            ltable.array.mask = False
           except:
             raise
 
