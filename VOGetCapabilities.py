@@ -20,6 +20,7 @@ def VOGetCapabilities(filename,outfile):
   parser = ElementTree.XMLParser(recover=True)
   f = codecs.open(filename,'r','utf-8')
   string = f.read()
+  string = bytes(bytearray(string, encoding='utf-8')) ## force utf-8 encoding even if xml says otherwise
   root = ElementTree.fromstring(string, parser)
   for element in root:
     res = element.tag
